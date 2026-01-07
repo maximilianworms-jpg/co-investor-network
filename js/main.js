@@ -46,9 +46,20 @@ jQuery.getJSON(GetQueryStringParams("config","config.json"), function(data, text
 });
 
 function initSigma(config) {
-    var data=config.data;
-    var a = sigma.init(document.getElementById("sigma-canvas")).drawingProperties(config.sigma.drawingProperties).graphProperties(config.sigma.graphProperties).mouseProperties(config.sigma.mouseProperties);
+    var data = config.data;
+    var a = sigma.init(document.getElementById("sigma-canvas"))
+        .drawingProperties({
+            ...config.sigma.drawingProperties,
+            defaultEdgeType: 'line',
+            edgeColor: 'source', // Optional: Kanten übernehmen Farbe des Startups
+            defaultEdgeSize: 2.5  // <--- Basis-Dicke beim Start
+        })
+        .graphProperties(config.sigma.graphProperties)
+        .mouseProperties(config.sigma.mouseProperties);
+    
     sigInst = a;
+    // ... restlicher Code
+    
     a.active = !1; a.neighbors = {}; a.detail = !1;
 
     dataReady = function() {
@@ -197,12 +208,12 @@ function nodeNormal() {
     sigInst.detail = !1;
     sigInst.iterEdges(function(e) { 
         e.hidden = !1; 
-        // Hier setzen wir die Dicke im Ruhezustand auf einen festen Wert (z.B. 1.0)
-        e.attr.size = 1.0; 
-        e.attr.color = "rgb(192,192,192)";
+        e.attr.size = 2.5; // <--- Hier die durchgehende Dicke festlegen (Standard ist oft 1)
+        e.attr.color = "rgb(192,192,192)"; // Einheitliches Grau
     });
     sigInst.iterNodes(function(n) { 
         n.hidden = !1; 
+        n.attr.lineWidth = 2;
     }); 
     sigInst.draw(); 
     $GP.info.hide(); 
