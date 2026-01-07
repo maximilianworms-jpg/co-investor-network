@@ -5,7 +5,7 @@ var industryMapping = {
     "#6B6B6B": "Investoren",               
     "#D97DD8": "Health & Climate Tech",    
     "#9900FF": "D11Z",                     
-    "#00DC7F": "Enterprise & Data AI",     
+    "#00C7FF": "Enterprise & Data AI",     
     "#FF7045": "Cybersecurity",            
     "#8CB900": "Logistics & Industry 4.0", 
     "#23966F": "Future Work & HR Tech"     
