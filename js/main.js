@@ -129,7 +129,7 @@ function nodeActive(a) {
             e.hidden = !1;
             // Wir setzen hier JEDE aktive Kante auf exakt die gleiche Dicke
         // Das überschreibt alle "falsche" Werte aus der data.json
-        e.attr.size = 1.5; 
+        e.attr.size = 2.5; 
         
         // Wir erzwingen das Grau, falls irgendwo ein Schwarz-Wert hängen geblieben ist
         e.attr.color = "rgb(192,192,192)";
