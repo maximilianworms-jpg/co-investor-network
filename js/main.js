@@ -127,6 +127,7 @@ function nodeActive(a) {
     sigInst.iterEdges(function (e) {
         if (e.source == a || e.target == a) {
             e.hidden = !1;
+            e.attr.size = 3;
             neighbors[e.source == a ? e.target : e.source] = 1;
         } else {
             e.hidden = !0;
@@ -189,8 +190,14 @@ function showCluster(a) {
 
 function nodeNormal() { 
     sigInst.detail = !1;
-    sigInst.iterEdges(function(e){ e.hidden = !1; });
-    sigInst.iterNodes(function(n){ n.hidden = !1; }); 
+    sigInst.iterEdges(function(e){ e.hidden = !1; });{ 
+    e.hidden = !1; 
+    e.attr.size = 1;
+        });
+    sigInst.iterNodes(function(n){ n.hidden = !1; }); { 
+    n.hidden = !1; 
+        n.attr.lineWidth = 2;
+         });
     sigInst.draw(); 
     $GP.info.hide(); 
 }
