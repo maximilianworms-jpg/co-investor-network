@@ -57,11 +57,6 @@ function initSigma(config) {
             var clusterKey = b.color; 
             a.clusters[clusterKey] || (a.clusters[clusterKey] = []);
             a.clusters[clusterKey].push(b.id);
-            
-            // NODE SIZE RANGE FIX: Nutze Werte aus Config (Standard 3-15 falls nicht gesetzt)
-            var minSize = config.sigma.drawingProperties.minNodeSize || 3;
-            var maxSize = config.sigma.drawingProperties.maxNodeSize || 15;
-            // Hier wird die Größe skaliert, falls b.size existiert
             b.displaySize = b.size; 
         });
         a.bind("upnodes", function (a) { nodeActive(a.content[0]) });
@@ -72,23 +67,19 @@ function initSigma(config) {
 }
 
 function setupGUI(config) {
-    // Logo-Bereich mit Größenbegrenzung und Abständen
     if (config.logo && config.logo.file) {
-        var logoHtml = '<div style="margin-bottom: 20px;">' + // Abstand nach unten
+        var logoHtml = '<div style="margin-bottom: 20px;">' +
                        '<a href="' + (config.logo.link || "#") + '">' +
                        '<img src="' + config.logo.file + '" alt="' + config.logo.text + '" ' +
-                       'style="max-width: 100%; height: auto; max-height: 80px; display: block;">' + // max-height begrenzt die vertikale Ausdehnung
+                       'style="max-width: 100%; height: auto; max-height: 80px; display: block;">' +
                        '</a></div>';
         $("#maintitle").html(logoHtml);
     } else {
         $("#maintitle").html("<h1>" + config.logo.text + "</h1>");
     }
 
-    $("#title").html("<h2 style='margin-top: 10px;'>" + config.text.title + "</h2>"); // Zusätzlicher Puffer oben
+    $("#title").html("<h2 style='margin-top: 10px;'>" + config.text.title + "</h2>");
     $("#titletext").html(config.text.intro);
-    
-    // ... restlicher Code (Search, Cluster-Initialisierung etc.)
-
 
     $GP = { calculating: !1, showgroup: !1 };
     $GP.intro = $("#intro");
@@ -100,7 +91,6 @@ function setupGUI(config) {
     $GP.info.find(".returntext, .close").click(nodeNormal);
     $GP.form = $("#mainpanel").find("form");
     
-    // SEARCH INITIALISIERUNG
     $GP.search = new Search($GP.form.find("#search"));
     
     $("#attributeselect").show(); 
@@ -127,7 +117,7 @@ function nodeActive(a) {
     sigInst.iterEdges(function (e) {
         if (e.source == a || e.target == a) {
             e.hidden = !1;
-            e.attr.size = 3;
+            e.attr.size = 3; // Dicke bei Auswahl
             neighbors[e.source == a ? e.target : e.source] = 1;
         } else {
             e.hidden = !0;
@@ -190,19 +180,18 @@ function showCluster(a) {
 
 function nodeNormal() { 
     sigInst.detail = !1;
-    sigInst.iterEdges(function(e){ e.hidden = !1; });{ 
-    e.hidden = !1; 
-    e.attr.size = 1;
-        });
-    sigInst.iterNodes(function(n){ n.hidden = !1; }); { 
-    n.hidden = !1; 
+    sigInst.iterEdges(function(e) { 
+        e.hidden = !1; 
+        e.attr.size = 1; // Standard-Dicke
+    });
+    sigInst.iterNodes(function(n) { 
+        n.hidden = !1; 
         n.attr.lineWidth = 2;
-         });
+    }); 
     sigInst.draw(); 
     $GP.info.hide(); 
 }
 
-// VOLLSTÄNDIGE SEARCH LOGIK
 function Search(a) {
     this.input = a.find("input");
     this.input.keyup($.proxy(function (e) {
