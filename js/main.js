@@ -195,8 +195,15 @@ function showCluster(a) {
 
 function nodeNormal() { 
     sigInst.detail = !1;
-    sigInst.iterEdges(function(e){ e.hidden = !1; });
-    sigInst.iterNodes(function(n){ n.hidden = !1; }); 
+    sigInst.iterEdges(function(e) { 
+        e.hidden = !1; 
+        // Hier setzen wir die Dicke im Ruhezustand auf einen festen Wert (z.B. 1.0)
+        e.attr.size = 1.0; 
+        e.attr.color = "rgb(192,192,192)";
+    });
+    sigInst.iterNodes(function(n) { 
+        n.hidden = !1; 
+    }); 
     sigInst.draw(); 
     $GP.info.hide(); 
 }
