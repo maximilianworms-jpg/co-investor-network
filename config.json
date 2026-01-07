@@ -1,0 +1,53 @@
+{
+  "type": "network",
+  "version": "1.0",
+  "data": "data.json",
+  "logo": {
+    "file": "images/D11Z_Logo_Claim_CMYK_RZ.png",
+    "link": "",
+    "text": "WormsM"
+  },
+  "text": {
+    "more": "Co-Investment \u0026 Branchen-Fokus\nDiese interaktive Visualisierung zeigt das Co-Investment-Netzwerk von D11Z. Das Diagramm verdeutlicht, in welche Startups wir investieren, mit welchen Partnern wir dabei zusammenarbeiten und wie intensiv diese Beziehungen sind.\n\nZentrale Vernetzung: Der große Knoten in der Mitte repräsentiert D11Z als Ankerpunkt des Ökosystems. Von hier aus ziehen sich die Verbindungen zu unseren Portfoliounternehmen und den jeweiligen Co-Investoren.\n\nBranchen-Zugehörigkeit: Die Farbe der Knoten markiert die Industrie der Startups. So lässt sich auf einen Blick erkennen, in welchen Sektoren (z. B. Software, Hardware, DeepTech) wir besonders aktiv sind und welche Co-Investoren sich auf die gleichen Branchen spezialisiert haben.\n\nInvestitionshäufigkeit: Die Linien zeigen die gemeinsamen Investments. Clusterbildung und die Dichte der Verbindungen machen sichtbar, wie oft wir mit bestimmten Partnern in spezifischen Industrien zusammenarbeiten.\n\nInteraktive Analyse: Über den Group Selector auf der linken Seite können Sie gezielt einzelne Branchen filtern, um die Verteilung unseres Kapitals und unserer Partnerschaften innerhalb eines bestimmten Industriesektors zu analysieren.",
+    "intro": "Dieses Diagramm zeigt unser Startup-Portfolio und die Co-Investoren mit denen wir in die Startups investiert haben. Die Farben zeigen in welcher Industrie die Startups sind",
+    "title": "D11Z Co-Investor Netzwerkdiagramm"
+  },
+  "legend": {
+    "edgeLabel": "Connection",
+    "colorLabel": "Industry",
+    "nodeLabel": "Company"
+  },
+  "features": {
+    "search": true,
+    "groupSelectorAttribute": "manual",
+    "hoverBehavior": "dim"
+  },
+  "informationPanel": {
+    "groupByEdgeDirection": false,
+    "imageAttribute": false
+  },
+  "sigma": {
+    "drawingProperties": {
+      "defaultEdgeType": "line",
+      "defaultHoverLabelBGColor": "#002147",
+      "defaultLabelBGColor": "#ddd",
+      "activeFontStyle": "bold",
+      "defaultLabelColor": "#000",
+      "labelThreshold": 10,
+      "defaultLabelHoverColor": "#fff",
+      "fontStyle": "bold",
+      "hoverFontStyle": "bold",
+      "defaultLabelSize": 14
+    },
+    "graphProperties": {
+      "maxEdgeSize": 0.5,
+      "minEdgeSize": 0.5,
+      "minNodeSize": 3,
+      "maxNodeSize": 15
+    },
+    "mouseProperties": {
+      "maxRatio": 20,
+      "minRatio": 0.75
+    }
+  }
+}
