@@ -127,6 +127,12 @@ function nodeActive(a) {
     sigInst.iterEdges(function (e) {
         if (e.source == a || e.target == a) {
             e.hidden = !1;
+            // Wir setzen hier JEDE aktive Kante auf exakt die gleiche Dicke
+        // Das überschreibt alle "falsche" Werte aus der data.json
+        e.attr.size = 1.5; 
+        
+        // Wir erzwingen das Grau, falls irgendwo ein Schwarz-Wert hängen geblieben ist
+        e.attr.color = "rgb(192,192,192)";
             neighbors[e.source == a ? e.target : e.source] = 1;
         } else {
             e.hidden = !0;
